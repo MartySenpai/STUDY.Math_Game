@@ -4,22 +4,7 @@ namespace Math_Game
 {
     internal class Helpers
     {
-        internal static List<Game> games = new List<Game>()
-        {
-            //new game { date = datetime.now.adddays(1), type = gametype.addition, score = 5 },
-            //new game { date = datetime.now.adddays(2), type = gametype.multiplication, score = 4 },
-            //new game { date = datetime.now.adddays(3), type = gametype.division, score = 4 },
-            //new game { date = datetime.now.adddays(4), type = gametype.subtraction, score = 3 },
-            //new game { date = datetime.now.adddays(5), type = gametype.addition, score = 1 },
-            //new game { date = datetime.now.adddays(6), type = gametype.multiplication, score = 2 },
-            //new game { date = datetime.now.adddays(7), type = gametype.division, score = 3 },
-            //new game { date = datetime.now.adddays(8), type = gametype.subtraction, score = 4 },
-            //new game { date = datetime.now.adddays(9), type = gametype.addition, score = 4 },
-            //new game { date = datetime.now.adddays(10), type = gametype.multiplication, score = 1 },
-            //new game { date = datetime.now.adddays(11), type = gametype.subtraction, score = 0 },
-            //new game { date = datetime.now.adddays(12), type = gametype.division, score = 2 },
-            //new game { date = datetime.now.adddays(13), type = gametype.subtraction, score = 5 },
-        };
+        internal static List<Game> games = new List<Game>();
         internal static void PrintGames()
         {
             //IEnumerable<Game> gamesToPrint = games.Where(x => x.Type == GameType.Division);
