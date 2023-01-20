@@ -7,8 +7,6 @@ namespace Math_Game
         internal static List<Game> games = new List<Game>();
         internal static void PrintGames()
         {
-            //IEnumerable<Game> gamesToPrint = games.Where(x => x.Type == GameType.Division);
-
             Console.Clear();
             Console.WriteLine("Games History");
             Console.WriteLine("------------------------------------");
