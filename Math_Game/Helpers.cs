@@ -12,19 +12,20 @@ namespace Math_Game
             Console.WriteLine("------------------------------------");
             foreach (Game game in games)
             {
-                Console.WriteLine($"{game.Date} - {game.Type}: {game.Score}pts");
+                Console.WriteLine($"{game.Date} - {game.Type}: {game.Score}pts Time: {game.GameTime:mm\\:ss\\:ff}");
             }
             Console.WriteLine("------------------------------------\n");
             Console.WriteLine("Press any key to return to the main menu");
             Console.ReadLine();
         }
-        internal static void AddToHistory(int gameScore, GameType gameType)
+        internal static void AddToHistory(int gameScore, GameType gameType, TimeSpan timeTaken)
         {
             games.Add(new Game
             {
                 Date = DateTime.Now,
                 Score = gameScore,
-                Type = gameType
+                Type = gameType,
+                GameTime = timeTaken
             });
         }
         internal static int[] GetDivisionNumbers()
