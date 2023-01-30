@@ -23,8 +23,8 @@ namespace Math_Game
                 Console.Clear();
                 Console.WriteLine(message);
 
-                firstNumber = random.Next(1, 9);
-                secondNumber = random.Next(1, 9);
+                firstNumber = random.Next(1, 11);
+                secondNumber = random.Next(1, 11);
 
                 Console.WriteLine($"{firstNumber} + {secondNumber}");
 
@@ -73,8 +73,8 @@ namespace Math_Game
                 Console.Clear();
                 Console.WriteLine(message);
 
-                firstNumber = random.Next(1, 9);
-                secondNumber = random.Next(1, 9);
+                firstNumber = random.Next(1, 11);
+                secondNumber = random.Next(1, 11);
 
                 Console.WriteLine($"{firstNumber} - {secondNumber}");
 
@@ -123,8 +123,8 @@ namespace Math_Game
                 Console.Clear();
                 Console.WriteLine(message);
 
-                firstNumber = random.Next(1, 9);
-                secondNumber = random.Next(1, 9);
+                firstNumber = random.Next(1, 11);
+                secondNumber = random.Next(1, 11);
 
                 Console.WriteLine($"{firstNumber} * {secondNumber}");
 
