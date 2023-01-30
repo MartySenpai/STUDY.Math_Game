@@ -68,5 +68,6 @@ namespace Math_Game
             }
             return name;
         }
+        //Add validate and difficulty select as helper
     }
 }

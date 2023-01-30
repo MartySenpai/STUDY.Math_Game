@@ -22,3 +22,5 @@ internal enum GameType
     Multiplication,
     Division
 }
+
+//Add game difficulty as enum.

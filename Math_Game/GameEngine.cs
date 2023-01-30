@@ -8,6 +8,33 @@ namespace Math_Game
         internal void AdditionGame(string message)
         {
             Console.WriteLine(message);
+            Console.WriteLine(@$"
+Please choose a difficulty option:
+1 - Easy
+2 - Normal
+3 - Hard
+C - Custom");
+
+            string difficultSelected = Console.ReadLine();
+
+            int n = 0;
+
+            switch (difficultSelected.Trim().ToLower())
+            {
+                case "1":
+                    n = 3;
+                    break;
+                case "2":
+                    n  = 5;
+                    break;
+                case "3":
+                    n = 10;
+                    break;
+                case "C":
+                    Console.WriteLine("Please enter how many questions you would like to recieve");
+                    n = Int32.Parse(Console.ReadLine());
+                    break;
+            }
 
             var random = new Random();
             var score = 0;
@@ -18,7 +45,7 @@ namespace Math_Game
             Stopwatch timer = new Stopwatch();
             timer.Start();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < n; i++)
             {
                 Console.Clear();
                 Console.WriteLine(message);
