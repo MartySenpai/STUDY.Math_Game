@@ -17,24 +17,7 @@ C - Custom");
 
             string difficultSelected = Console.ReadLine();
 
-            int n = 0;
-
-            switch (difficultSelected.Trim().ToLower())
-            {
-                case "1":
-                    n = 3;
-                    break;
-                case "2":
-                    n  = 5;
-                    break;
-                case "3":
-                    n = 10;
-                    break;
-                case "C":
-                    Console.WriteLine("Please enter how many questions you would like to recieve");
-                    n = Int32.Parse(Console.ReadLine());
-                    break;
-            }
+            int n = Helpers.DifficultySelect(difficultSelected);
 
             var random = new Random();
             var score = 0;
@@ -71,7 +54,7 @@ C - Custom");
                     Console.ReadLine();
                 }
 
-                if (i == 4)
+                if (i == n - 1)
                 {
                     Console.WriteLine($"Game over, Your final score is {score}. Press any key to go back to the main menu.");
                     Console.ReadLine();

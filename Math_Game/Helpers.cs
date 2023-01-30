@@ -68,6 +68,41 @@ namespace Math_Game
             }
             return name;
         }
-        //Add validate and difficulty select as helper
+
+        internal static int CustomQuestions()
+        {
+            int value = 0;
+            value = Int32.Parse(Console.ReadLine());
+
+            return value;
+        }
+
+        internal static int DifficultySelect(string input)
+        {
+            int amount = 0;
+
+            switch (input.Trim().ToLower())
+            {
+                case "1":
+                    amount = 3;
+                    break;
+                case "2":
+                    amount = 5;
+                    break;
+                case "3":
+                    amount = 10;
+                    break;
+                case "c":
+                    Console.Clear();
+                    Console.WriteLine("Please enter how many questions you would like to recieve.");
+                    amount = Helpers.CustomQuestions();
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    break;
+            }
+
+            return amount;
+        }
     }
 }

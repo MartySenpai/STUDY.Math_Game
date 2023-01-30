@@ -51,7 +51,7 @@ Q - Quit the program");
                         isGameOn = false;
                         break;
                     default:
-                        Console.WriteLine("Invalid input");
+                        Console.WriteLine("Invalid input, enter a valid key to continue.");
                         break;
                 }
             } while (isGameOn);
