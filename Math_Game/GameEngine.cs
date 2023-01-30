@@ -8,16 +8,8 @@ namespace Math_Game
         internal void AdditionGame(string message)
         {
             Console.WriteLine(message);
-            Console.WriteLine(@$"
-Please choose a difficulty option:
-1 - Easy
-2 - Normal
-3 - Hard
-C - Custom");
 
-            string difficultSelected = Console.ReadLine();
-
-            int n = Helpers.DifficultySelect(difficultSelected);
+            int n = Menu.ShowDifficultyMenu();
 
             var random = new Random();
             var score = 0;
@@ -69,6 +61,8 @@ C - Custom");
         {
             Console.WriteLine(message);
 
+            int n = Menu.ShowDifficultyMenu();
+
             var random = new Random();
             var score = 0;
 
@@ -78,7 +72,7 @@ C - Custom");
             Stopwatch timer = new Stopwatch();
             timer.Start();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < n; i++)
             {
                 Console.Clear();
                 Console.WriteLine(message);
@@ -103,7 +97,7 @@ C - Custom");
                     Console.ReadLine();
                 }
 
-                if (i == 4)
+                if (i == n - 1)
                 {
                     Console.WriteLine($"Game over, Your final score is {score}. Press any key to go back to the main menu.");
                     Console.ReadLine();
@@ -119,6 +113,8 @@ C - Custom");
         {
             Console.WriteLine(message);
 
+            int n = Menu.ShowDifficultyMenu();
+
             var random = new Random();
             var score = 0;
 
@@ -128,7 +124,7 @@ C - Custom");
             Stopwatch timer = new Stopwatch();
             timer.Start();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < n; i++)
             {
                 Console.Clear();
                 Console.WriteLine(message);
@@ -153,7 +149,7 @@ C - Custom");
                     Console.ReadLine();
                 }
 
-                if (i == 4)
+                if (i == n - 1)
                 {
                     Console.WriteLine($"Game over, Your final score is {score}. Press any key to go back to the main menu.");
                     Console.ReadLine();
@@ -166,12 +162,16 @@ C - Custom");
         }
         internal void DivisionGame(string message)
         {
+            Console.WriteLine(message);
+
+            int n = Menu.ShowDifficultyMenu();
+
             int score = 0;
 
             Stopwatch timer = new Stopwatch();
             timer.Start();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < n; i++)
             {
                 Console.Clear();
                 Console.WriteLine(message);
@@ -197,7 +197,7 @@ C - Custom");
                     Console.ReadLine();
                 }
 
-                if (i == 4)
+                if (i == n - 1)
                 {
                     Console.WriteLine($"Game over, Your final score is {score}. Press any key to go back to the main menu.");
                     Console.ReadLine();

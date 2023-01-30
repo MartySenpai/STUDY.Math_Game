@@ -56,5 +56,41 @@ Q - Quit the program");
                 }
             } while (isGameOn);
         }
+        internal static int ShowDifficultyMenu()
+        {
+            Console.Clear();
+            Console.WriteLine(@$"
+Please choose a difficulty option:
+1 - Easy
+2 - Normal
+3 - Hard
+C - Custom");
+
+            string input = Console.ReadLine();
+            int amount = 0;
+
+            switch (input.Trim().ToLower())
+            {
+                case "1":
+                    amount = 3;
+                    break;
+                case "2":
+                    amount = 5;
+                    break;
+                case "3":
+                    amount = 10;
+                    break;
+                case "c":
+                    Console.Clear();
+                    Console.WriteLine("Please enter how many questions you would like to recieve.");
+                    amount = Helpers.GetQuestionAmount();
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    break;
+            }
+
+            return amount;
+        }
     }
 }

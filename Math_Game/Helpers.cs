@@ -68,8 +68,7 @@ namespace Math_Game
             }
             return name;
         }
-
-        internal static int CustomQuestions()
+        internal static int GetQuestionAmount()
         {
             int value = 0;
             value = Int32.Parse(Console.ReadLine());
@@ -77,32 +76,5 @@ namespace Math_Game
             return value;
         }
 
-        internal static int DifficultySelect(string input)
-        {
-            int amount = 0;
-
-            switch (input.Trim().ToLower())
-            {
-                case "1":
-                    amount = 3;
-                    break;
-                case "2":
-                    amount = 5;
-                    break;
-                case "3":
-                    amount = 10;
-                    break;
-                case "c":
-                    Console.Clear();
-                    Console.WriteLine("Please enter how many questions you would like to recieve.");
-                    amount = Helpers.CustomQuestions();
-                    break;
-                default:
-                    Console.WriteLine("Invalid input");
-                    break;
-            }
-
-            return amount;
-        }
     }
 }
