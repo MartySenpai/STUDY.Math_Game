@@ -12,20 +12,21 @@ namespace Math_Game
             Console.WriteLine("------------------------------------");
             foreach (Game game in games)
             {
-                Console.WriteLine($"{game.Date} - {game.Type}: {game.Score}pts Time: {game.GameTime:mm\\:ss\\:ff}");
+                Console.WriteLine($"{game.Date} - {game.Type} : {game.Score}/{game.NQuestions} pts - Time: {game.GameTime:mm\\:ss\\:ff}");
             }
             Console.WriteLine("------------------------------------\n");
             Console.WriteLine("Press any key to return to the main menu");
             Console.ReadLine();
         }
-        internal static void AddToHistory(int gameScore, GameType gameType, TimeSpan timeTaken)
+        internal static void AddToHistory(int gameScore, int nQuestions, GameType gameType, TimeSpan timeTaken)
         {
             games.Add(new Game
             {
                 Date = DateTime.Now,
                 Score = gameScore,
                 Type = gameType,
-                GameTime = timeTaken
+                GameTime = timeTaken,
+                NQuestions = nQuestions
             });
         }
         internal static int[] GetDivisionNumbers()
@@ -70,10 +71,18 @@ namespace Math_Game
         }
         internal static int GetQuestionAmount()
         {
-            int value = 0;
-            value = Int32.Parse(Console.ReadLine());
+            Console.Clear();
+            Console.WriteLine("Please enter how many questions you would like to recieve.");
 
-            return value;
+            string input = (Console.ReadLine());
+
+            if (string.IsNullOrEmpty(input))
+            {
+                input = "5";
+            }
+
+            int amount = Int32.Parse(input);
+            return amount;
         }
 
     }

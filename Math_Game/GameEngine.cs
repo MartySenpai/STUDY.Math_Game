@@ -9,7 +9,9 @@ namespace Math_Game
         {
             Console.WriteLine(message);
 
-            int n = Menu.ShowDifficultyMenu();
+            int diffuculty = Menu.ShowDifficultyMenu();
+
+            int nQuestions = Helpers.GetQuestionAmount();
 
             var random = new Random();
             var score = 0;
@@ -17,24 +19,39 @@ namespace Math_Game
             int firstNumber;
             int secondNumber;
 
+            List<int> numbers = new List<int>();
+
             Stopwatch timer = new Stopwatch();
             timer.Start();
 
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < nQuestions; i++)
             {
                 Console.Clear();
                 Console.WriteLine(message);
 
-                firstNumber = random.Next(1, 11);
-                secondNumber = random.Next(1, 11);
+                numbers.Clear();
 
-                Console.WriteLine($"{firstNumber} + {secondNumber}");
+                for (int j = 0; j < diffuculty; j++)
+                {
+                    numbers.Add(random.Next(1, 11));
+                    if (j == diffuculty - 1)
+                    {
+                        Console.Write($"{numbers[j]}\n");
+                        //firstNumber = random.Next(1, 11);
+                        //secondNumber = random.Next(1, 11);
+                    }
+                    else
+                    {
+                        Console.Write($"{numbers[j]} + ");
+                    }
+                }
+                //Console.WriteLine($"{firstNumber} + {secondNumber}");
 
                 var result = Console.ReadLine();
 
                 result = Helpers.ValidateResult(result);
 
-                if (int.Parse(result) == firstNumber + secondNumber)
+                if (int.Parse(result) == numbers.Sum())
                 {
                     Console.WriteLine("Your answer was correct! Type any key for the next question");
                     score++;
@@ -46,7 +63,7 @@ namespace Math_Game
                     Console.ReadLine();
                 }
 
-                if (i == n - 1)
+                if (i == nQuestions - 1)
                 {
                     Console.WriteLine($"Game over, Your final score is {score}. Press any key to go back to the main menu.");
                     Console.ReadLine();
@@ -55,7 +72,7 @@ namespace Math_Game
             timer.Stop();
             TimeSpan timeTaken = timer.Elapsed;
 
-            Helpers.AddToHistory(score, GameType.Addition, timeTaken);
+            Helpers.AddToHistory(score, nQuestions, GameType.Addition, timeTaken);
         }
         internal void SubtractionGame(string message)
         {
@@ -106,7 +123,7 @@ namespace Math_Game
             timer.Stop();
             TimeSpan timeTaken = timer.Elapsed;
 
-            Helpers.AddToHistory(score, GameType.Subtraction, timeTaken);
+            //Helpers.AddToHistory(score, GameType.Subtraction, timeTaken);
 
         }
         internal void MultiplicationGame(string message)
@@ -158,7 +175,7 @@ namespace Math_Game
             timer.Stop();
             TimeSpan timeTaken = timer.Elapsed;
 
-            Helpers.AddToHistory(score, GameType.Multiplication, timeTaken);
+            //Helpers.AddToHistory(score, GameType.Multiplication, timeTaken);
         }
         internal void DivisionGame(string message)
         {
@@ -206,7 +223,7 @@ namespace Math_Game
             timer.Stop();
             TimeSpan timeTaken = timer.Elapsed;
 
-            Helpers.AddToHistory(score, GameType.Division, timeTaken);
+            //Helpers.AddToHistory(score, GameType.Division, timeTaken);
         }
     }
 }

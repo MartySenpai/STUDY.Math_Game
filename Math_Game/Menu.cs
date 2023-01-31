@@ -63,34 +63,28 @@ Q - Quit the program");
 Please choose a difficulty option:
 1 - Easy
 2 - Normal
-3 - Hard
-C - Custom");
+3 - Hard");
 
             string input = Console.ReadLine();
-            int amount = 0;
+            int difficulty = 0;
 
             switch (input.Trim().ToLower())
             {
                 case "1":
-                    amount = 3;
+                    difficulty = 2;
                     break;
                 case "2":
-                    amount = 5;
+                    difficulty = 3;
                     break;
                 case "3":
-                    amount = 10;
-                    break;
-                case "c":
-                    Console.Clear();
-                    Console.WriteLine("Please enter how many questions you would like to recieve.");
-                    amount = Helpers.GetQuestionAmount();
+                    difficulty = 4;
                     break;
                 default:
                     Console.WriteLine("Invalid input");
                     break;
             }
 
-            return amount;
+            return difficulty;
         }
     }
 }

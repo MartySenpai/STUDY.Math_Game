@@ -13,6 +13,7 @@ internal class Game
     public int Score { get; set; }
     public GameType Type { get; set; }
     public TimeSpan GameTime { get; set; }
+    public int NQuestions { get; set; }
 }
 
 internal enum GameType
@@ -23,4 +24,4 @@ internal enum GameType
     Division
 }
 
-//Add game difficulty as enum.
+//Add game difficulty as enum. might have to refactor diffcult settings and finish them before adding.
