@@ -11,7 +11,7 @@ namespace Math_Game
 
             string difficulty = Menu.ShowDifficultyMenu();
 
-            int nQuestions = Helpers.GetQuestionAmount();
+            int nQuestions = Helpers.GetAmountOfQuestions();
 
             char operand = '+';
 
@@ -64,7 +64,7 @@ namespace Math_Game
 
             string difficulty = Menu.ShowDifficultyMenu();
 
-            int nQuestions = Helpers.GetQuestionAmount();
+            int nQuestions = Helpers.GetAmountOfQuestions();
 
             char operand = '-';
 
@@ -88,7 +88,14 @@ namespace Math_Game
 
                 result = Helpers.ValidateResult(result);
 
-                if (int.Parse(result) == numbers.Sum())
+                int difference = numbers[0];
+
+                for (int j = 1; j < numbers.Count; j++)
+                {
+                    difference -= numbers[j];
+                }
+
+                if (int.Parse(result) == difference)
                 {
                     Console.WriteLine("Your answer was correct! Type any key for the next question");
                     score++;
@@ -118,7 +125,7 @@ namespace Math_Game
 
             string difficulty = Menu.ShowDifficultyMenu();
 
-            int nQuestions = Helpers.GetQuestionAmount();
+            int nQuestions = Helpers.GetAmountOfQuestions();
 
             char operand = '*';
 
@@ -142,7 +149,14 @@ namespace Math_Game
 
                 result = Helpers.ValidateResult(result);
 
-                if (int.Parse(result) == numbers.Sum())
+                int product = numbers[0];
+
+                for (int j = 1; j < numbers.Count; j++)
+                {
+                    product *= numbers[j];
+                }
+
+                if (int.Parse(result) == product)
                 {
                     Console.WriteLine("Your answer was correct! Type any key for the next question");
                     score++;
@@ -165,18 +179,21 @@ namespace Math_Game
 
             Helpers.AddToHistory(score, nQuestions, GameType.Multiplication, difficulty, timeTaken);
         }
+        //Add Diffuculty for DivisionGame
         internal void DivisionGame(string message)
         {
             Console.WriteLine(message);
 
-            int n = Menu.ShowDifficultyMenu();
+            string difficulty = Menu.ShowDifficultyMenu();
+
+            int nQuestions = Helpers.GetAmountOfQuestions();
 
             int score = 0;
 
             Stopwatch timer = new Stopwatch();
             timer.Start();
 
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < nQuestions; i++)
             {
                 Console.Clear();
                 Console.WriteLine(message);
@@ -188,6 +205,7 @@ namespace Math_Game
                 Console.WriteLine($"{firstNumber} / {secondNumber}");
 
                 string result = Console.ReadLine();
+
                 result = Helpers.ValidateResult(result);
 
                 if (int.Parse(result) == firstNumber / secondNumber)
@@ -202,7 +220,7 @@ namespace Math_Game
                     Console.ReadLine();
                 }
 
-                if (i == n - 1)
+                if (i == nQuestions - 1)
                 {
                     Console.WriteLine($"Game over, Your final score is {score}. Press any key to go back to the main menu.");
                     Console.ReadLine();
@@ -211,7 +229,7 @@ namespace Math_Game
             timer.Stop();
             TimeSpan timeTaken = timer.Elapsed;
 
-            //Helpers.AddToHistory(score, GameType.Division, timeTaken);
+           Helpers.AddToHistory(score,nQuestions, GameType.Division, difficulty, timeTaken);
         }
     }
 }

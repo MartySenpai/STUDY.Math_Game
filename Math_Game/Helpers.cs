@@ -71,7 +71,7 @@ namespace Math_Game
             }
             return name;
         }
-        internal static int GetQuestionAmount()
+        internal static int GetAmountOfQuestions()
         {
             Console.Clear();
             Console.WriteLine("Please enter how many questions you would like to recieve.");
