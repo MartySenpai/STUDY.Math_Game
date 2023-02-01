@@ -9,15 +9,13 @@ namespace Math_Game
         {
             Console.WriteLine(message);
 
-            int diffuculty = Menu.ShowDifficultyMenu();
+            string difficulty = Menu.ShowDifficultyMenu();
 
             int nQuestions = Helpers.GetQuestionAmount();
 
-            var random = new Random();
-            var score = 0;
+            char operand = '+';
 
-            int firstNumber;
-            int secondNumber;
+            var score = 0;
 
             List<int> numbers = new List<int>();
 
@@ -31,21 +29,7 @@ namespace Math_Game
 
                 numbers.Clear();
 
-                for (int j = 0; j < diffuculty; j++)
-                {
-                    numbers.Add(random.Next(1, 11));
-                    if (j == diffuculty - 1)
-                    {
-                        Console.Write($"{numbers[j]}\n");
-                        //firstNumber = random.Next(1, 11);
-                        //secondNumber = random.Next(1, 11);
-                    }
-                    else
-                    {
-                        Console.Write($"{numbers[j]} + ");
-                    }
-                }
-                //Console.WriteLine($"{firstNumber} + {secondNumber}");
+                Helpers.PrintQuestions(difficulty, numbers, operand);
 
                 var result = Console.ReadLine();
 
@@ -72,37 +56,39 @@ namespace Math_Game
             timer.Stop();
             TimeSpan timeTaken = timer.Elapsed;
 
-            Helpers.AddToHistory(score, nQuestions, GameType.Addition, timeTaken);
+            Helpers.AddToHistory(score, nQuestions, GameType.Addition, difficulty, timeTaken);
         }
         internal void SubtractionGame(string message)
         {
             Console.WriteLine(message);
 
-            int n = Menu.ShowDifficultyMenu();
+            string difficulty = Menu.ShowDifficultyMenu();
 
-            var random = new Random();
+            int nQuestions = Helpers.GetQuestionAmount();
+
+            char operand = '-';
+
             var score = 0;
 
-            int firstNumber;
-            int secondNumber;
+            List<int> numbers = new List<int>();
 
             Stopwatch timer = new Stopwatch();
             timer.Start();
 
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < nQuestions; i++)
             {
                 Console.Clear();
                 Console.WriteLine(message);
 
-                firstNumber = random.Next(1, 11);
-                secondNumber = random.Next(1, 11);
+                numbers.Clear();
 
-                Console.WriteLine($"{firstNumber} - {secondNumber}");
+                Helpers.PrintQuestions(difficulty, numbers, operand);
 
                 var result = Console.ReadLine();
+
                 result = Helpers.ValidateResult(result);
 
-                if (int.Parse(result) == firstNumber - secondNumber)
+                if (int.Parse(result) == numbers.Sum())
                 {
                     Console.WriteLine("Your answer was correct! Type any key for the next question");
                     score++;
@@ -114,7 +100,7 @@ namespace Math_Game
                     Console.ReadLine();
                 }
 
-                if (i == n - 1)
+                if (i == nQuestions - 1)
                 {
                     Console.WriteLine($"Game over, Your final score is {score}. Press any key to go back to the main menu.");
                     Console.ReadLine();
@@ -123,38 +109,40 @@ namespace Math_Game
             timer.Stop();
             TimeSpan timeTaken = timer.Elapsed;
 
-            //Helpers.AddToHistory(score, GameType.Subtraction, timeTaken);
+            Helpers.AddToHistory(score, nQuestions, GameType.Subtraction, difficulty, timeTaken);
 
         }
         internal void MultiplicationGame(string message)
         {
             Console.WriteLine(message);
 
-            int n = Menu.ShowDifficultyMenu();
+            string difficulty = Menu.ShowDifficultyMenu();
 
-            var random = new Random();
+            int nQuestions = Helpers.GetQuestionAmount();
+
+            char operand = '*';
+
             var score = 0;
 
-            int firstNumber;
-            int secondNumber;
+            List<int> numbers = new List<int>();
 
             Stopwatch timer = new Stopwatch();
             timer.Start();
 
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < nQuestions; i++)
             {
                 Console.Clear();
                 Console.WriteLine(message);
 
-                firstNumber = random.Next(1, 11);
-                secondNumber = random.Next(1, 11);
+                numbers.Clear();
 
-                Console.WriteLine($"{firstNumber} * {secondNumber}");
+                Helpers.PrintQuestions(difficulty, numbers, operand);
 
                 var result = Console.ReadLine();
+
                 result = Helpers.ValidateResult(result);
 
-                if (int.Parse(result) == firstNumber * secondNumber)
+                if (int.Parse(result) == numbers.Sum())
                 {
                     Console.WriteLine("Your answer was correct! Type any key for the next question");
                     score++;
@@ -166,7 +154,7 @@ namespace Math_Game
                     Console.ReadLine();
                 }
 
-                if (i == n - 1)
+                if (i == nQuestions - 1)
                 {
                     Console.WriteLine($"Game over, Your final score is {score}. Press any key to go back to the main menu.");
                     Console.ReadLine();
@@ -175,7 +163,7 @@ namespace Math_Game
             timer.Stop();
             TimeSpan timeTaken = timer.Elapsed;
 
-            //Helpers.AddToHistory(score, GameType.Multiplication, timeTaken);
+            Helpers.AddToHistory(score, nQuestions, GameType.Multiplication, difficulty, timeTaken);
         }
         internal void DivisionGame(string message)
         {

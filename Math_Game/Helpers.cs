@@ -1,4 +1,5 @@
 ﻿using Math_Game.Models;
+using System;
 
 namespace Math_Game
 {
@@ -12,19 +13,20 @@ namespace Math_Game
             Console.WriteLine("------------------------------------");
             foreach (Game game in games)
             {
-                Console.WriteLine($"{game.Date} - {game.Type} : {game.Score}/{game.NQuestions} pts - Time: {game.GameTime:mm\\:ss\\:ff}");
+                Console.WriteLine($"{game.Date} - {game.Difficulty} - {game.Type} : {game.Score}/{game.NQuestions} pts - Time: {game.GameTime:mm\\:ss\\:ff}");
             }
             Console.WriteLine("------------------------------------\n");
             Console.WriteLine("Press any key to return to the main menu");
             Console.ReadLine();
         }
-        internal static void AddToHistory(int gameScore, int nQuestions, GameType gameType, TimeSpan timeTaken)
+        internal static void AddToHistory(int gameScore, int nQuestions, GameType gameType, string difficulty, TimeSpan timeTaken)
         {
             games.Add(new Game
             {
                 Date = DateTime.Now,
                 Score = gameScore,
                 Type = gameType,
+                Difficulty = difficulty,
                 GameTime = timeTaken,
                 NQuestions = nQuestions
             });
@@ -85,5 +87,37 @@ namespace Math_Game
             return amount;
         }
 
+        internal static void PrintQuestions(string difficulty, List<int> numbers, char operand)
+        {
+            var random = new Random();
+
+            int n = 0;
+
+            switch (difficulty)
+            {
+                case "Easy":
+                    n = 2;
+                    break;
+                case "Normal":
+                    n = 3;
+                    break;
+                case "Hard":
+                    n = 4;
+                    break;
+            }
+
+            for (int j = 0; j < n; j++)
+            {
+                numbers.Add(random.Next(1, 11));
+                if (j == n - 1)
+                {
+                    Console.Write($"{numbers[j]}\n");
+                }
+                else
+                {
+                    Console.Write($"{numbers[j]} {operand} ");
+                }
+            }
+        }
     }
 }

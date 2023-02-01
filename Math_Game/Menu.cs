@@ -56,7 +56,7 @@ Q - Quit the program");
                 }
             } while (isGameOn);
         }
-        internal static int ShowDifficultyMenu()
+        internal static string ShowDifficultyMenu()
         {
             Console.Clear();
             Console.WriteLine(@$"
@@ -66,18 +66,18 @@ Please choose a difficulty option:
 3 - Hard");
 
             string input = Console.ReadLine();
-            int difficulty = 0;
+            string difficulty = "";
 
             switch (input.Trim().ToLower())
             {
                 case "1":
-                    difficulty = 2;
+                    difficulty = "Easy";
                     break;
                 case "2":
-                    difficulty = 3;
+                    difficulty = "Normal";
                     break;
                 case "3":
-                    difficulty = 4;
+                    difficulty = "Hard";
                     break;
                 default:
                     Console.WriteLine("Invalid input");
