@@ -50,11 +50,11 @@ namespace Math_Game
 
             return result;
         }
-        internal static string? ValidateResult(string result)
+        internal static string? ValidateInput(string result)
         {
             while (string.IsNullOrEmpty(result) || !Int32.TryParse(result, out _))
             {
-                Console.WriteLine("Your answer needs to be an integer, Try again.");
+                Console.WriteLine("Your  needs to be an integer, Try again.");
                 result = Console.ReadLine();
             }
             return result;
@@ -79,13 +79,12 @@ namespace Math_Game
 
             string input = (Console.ReadLine());
 
-            input = ValidateResult(input);
+            input = ValidateInput(input);
 
             int amount = Int32.Parse(input);
 
             return amount;
         }
-
         internal static void PrintQuestions(string difficulty, List<int> numbers, char operand)
         {
             var random = new Random();

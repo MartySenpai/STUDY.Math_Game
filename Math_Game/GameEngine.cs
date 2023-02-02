@@ -33,7 +33,7 @@ namespace Math_Game
 
                 var result = Console.ReadLine();
 
-                result = Helpers.ValidateResult(result);
+                result = Helpers.ValidateInput(result);
 
                 if (int.Parse(result) == numbers.Sum())
                 {
@@ -84,9 +84,9 @@ namespace Math_Game
 
                 Helpers.PrintQuestions(difficulty, numbers, operand);
 
-                var result = Console.ReadLine();
+                string result = Console.ReadLine();
 
-                result = Helpers.ValidateResult(result);
+                result = Helpers.ValidateInput(result);
 
                 int difference = numbers[0];
 
@@ -147,7 +147,7 @@ namespace Math_Game
 
                 var result = Console.ReadLine();
 
-                result = Helpers.ValidateResult(result);
+                result = Helpers.ValidateInput(result);
 
                 int product = numbers[0];
 
@@ -207,7 +207,7 @@ namespace Math_Game
 
                 string result = Console.ReadLine();
 
-                result = Helpers.ValidateResult(result);
+                result = Helpers.ValidateInput(result);
 
                 if (int.Parse(result) == firstNumber / secondNumber)
                 {
