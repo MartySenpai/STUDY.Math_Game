@@ -23,6 +23,7 @@ A - Addition
 S - Subtraction
 M - Multiplication
 D - Division
+R - Randomized
 Q - Quit the program");
                 Console.WriteLine("-----------------------------------------------------------------------");
 
@@ -44,6 +45,9 @@ Q - Quit the program");
                         break;
                     case "d":
                         gameEngine.DivisionGame("Division game");
+                        break;
+                    case "r":
+                        gameEngine.RandomGame("Randomized game");
                         break;
                     case "q":
                         Console.Clear();

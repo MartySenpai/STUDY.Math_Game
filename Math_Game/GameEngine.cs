@@ -1,4 +1,5 @@
 ﻿using Math_Game.Models;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Math_Game
@@ -153,6 +154,72 @@ namespace Math_Game
 
                 for (int j = 1; j < numbers.Count; j++)
                 {
+                    product *= numbers[j];
+                }
+
+                if (int.Parse(result) == product)
+                {
+                    Console.WriteLine("Your answer was correct! Type any key for the next question");
+                    score++;
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Your answer was incorrect. Type any key for the next question");
+                    Console.ReadLine();
+                }
+
+                if (i == nQuestions - 1)
+                {
+                    Console.WriteLine($"Game over, Your final score is {score}. Press any key to go back to the main menu.");
+                    Console.ReadLine();
+                }
+            }
+            timer.Stop();
+            TimeSpan timeTaken = timer.Elapsed;
+
+            Helpers.AddToHistory(score, nQuestions, GameType.Multiplication, difficulty, timeTaken);
+        }
+        internal void RandomGame(string message)
+        {
+            Console.WriteLine(message);
+
+            Random random = new Random();
+
+            string difficulty = Menu.ShowDifficultyMenu();
+
+            int nQuestions = Helpers.GetAmountOfQuestions();
+
+            List<char> operands = new List<char> { '+', '-', '*', '/'};
+
+            var score = 0;
+
+            List<int> numbers = new List<int>();
+
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+
+            for (int i = 0; i < nQuestions; i++)
+            {
+                Console.Clear();
+                Console.WriteLine(message);
+
+                // Clear previous values from numbers. 
+                numbers.Clear();
+
+                char operand = operands[random.Next(0, 4)];
+
+                Helpers.PrintQuestions(difficulty, numbers, operand);
+
+                var result = Console.ReadLine();
+
+                result = Helpers.ValidateInput(result);
+
+                int product = numbers[0];
+
+                for (int j = 1; j < numbers.Count; j++)
+                {
+                    // Find a way to input current operand into result check.
                     product *= numbers[j];
                 }
 
