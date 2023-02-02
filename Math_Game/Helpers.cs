@@ -25,10 +25,10 @@ namespace Math_Game
             {
                 Date = DateTime.Now,
                 Score = gameScore,
+                NQuestions = nQuestions,
                 Type = gameType,
                 Difficulty = difficulty,
-                GameTime = timeTaken,
-                NQuestions = nQuestions
+                GameTime = timeTaken
             });
         }
         internal static int[] GetDivisionNumbers()
@@ -73,17 +73,16 @@ namespace Math_Game
         }
         internal static int GetAmountOfQuestions()
         {
+
             Console.Clear();
             Console.WriteLine("Please enter how many questions you would like to recieve.");
 
             string input = (Console.ReadLine());
 
-            if (string.IsNullOrEmpty(input))
-            {
-                input = "5";
-            }
+            input = ValidateResult(input);
 
             int amount = Int32.Parse(input);
+
             return amount;
         }
 

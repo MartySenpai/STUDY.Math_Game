@@ -179,12 +179,13 @@ namespace Math_Game
 
             Helpers.AddToHistory(score, nQuestions, GameType.Multiplication, difficulty, timeTaken);
         }
-        //Add Diffuculty for DivisionGame
+
+        //DivisionGame does not offer difficult levels.
         internal void DivisionGame(string message)
         {
             Console.WriteLine(message);
 
-            string difficulty = Menu.ShowDifficultyMenu();
+            string difficulty = "Easy";
 
             int nQuestions = Helpers.GetAmountOfQuestions();
 

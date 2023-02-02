@@ -51,38 +51,50 @@ Q - Quit the program");
                         isGameOn = false;
                         break;
                     default:
-                        Console.WriteLine("Invalid input, enter a valid key to continue.");
+                        Console.WriteLine("Invalid input, press enter to continue and enter a valid key.");
+                        Console.ReadLine();
                         break;
                 }
             } while (isGameOn);
         }
         internal static string ShowDifficultyMenu()
         {
-            Console.Clear();
-            Console.WriteLine(@$"
+            bool selectingDifficulty = true;
+
+            string difficulty = "";
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine(@$"
 Please choose a difficulty option:
 1 - Easy
 2 - Normal
 3 - Hard");
 
-            string input = Console.ReadLine();
-            string difficulty = "";
+                string input = Console.ReadLine();
 
-            switch (input.Trim().ToLower())
-            {
-                case "1":
-                    difficulty = "Easy";
-                    break;
-                case "2":
-                    difficulty = "Normal";
-                    break;
-                case "3":
-                    difficulty = "Hard";
-                    break;
-                default:
-                    Console.WriteLine("Invalid input");
-                    break;
-            }
+                switch (input.Trim().ToLower())
+                {
+                    case "1":
+                        difficulty = "Easy";
+                        selectingDifficulty = false;
+                        break;
+                    case "2":
+                        difficulty = "Normal";
+                        selectingDifficulty = false;
+                        break;
+                    case "3":
+                        difficulty = "Hard";
+                        selectingDifficulty = false;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input, press enter to continue and enter a valid key.");
+                        Console.ReadLine();
+                        break;
+                }
+
+            } while (selectingDifficulty);
 
             return difficulty;
         }
