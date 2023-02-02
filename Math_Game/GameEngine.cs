@@ -219,8 +219,23 @@ namespace Math_Game
 
                 for (int j = 1; j < numbers.Count; j++)
                 {
-                    // Find a way to input current operand into result check.
-                    product *= numbers[j];
+                    // Fix division questions.
+                    if (operand == '+')
+                    {
+                        product += numbers[j];
+                    }
+                    else if (operand == '-')
+                    {
+                        product -= numbers[j];
+                    }
+                    else if (operand == '*')
+                    {
+                        product *= numbers[j];
+                    }
+                    else
+                    {
+                        product /= numbers[j];
+                    }
                 }
 
                 if (int.Parse(result) == product)
