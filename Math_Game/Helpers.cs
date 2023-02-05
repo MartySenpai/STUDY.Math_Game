@@ -31,13 +31,13 @@ namespace Math_Game
                 GameTime = timeTaken
             });
         }
-        internal static int[] GetDivisionNumbers()
+        internal static List<int> GetDivisionNumbers()
         {
             Random random = new Random();
             int firstNumber = random.Next(1, 101);
             int secondNumber = random.Next(1, 101);
 
-            var result = new int[2];
+            List<int> numbers = new List<int>();
 
             while (firstNumber % secondNumber != 0)
             {
@@ -45,10 +45,10 @@ namespace Math_Game
                 secondNumber = random.Next(1, 101);
             }
 
-            result[0] = firstNumber;
-            result[1] = secondNumber;
+            numbers.Add(firstNumber);
+            numbers.Add(secondNumber);
 
-            return result;
+            return numbers;
         }
         internal static string? ValidateInput(string result)
         {

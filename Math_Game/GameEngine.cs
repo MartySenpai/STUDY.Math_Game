@@ -204,10 +204,14 @@ namespace Math_Game
                 Console.Clear();
                 Console.WriteLine(message);
 
+                char operand = operands[random.Next(0, 4)];
+
                 // Clear previous values from numbers. 
                 numbers.Clear();
-
-                char operand = operands[random.Next(0, 4)];
+                if (operand == '/') 
+                {
+                    numbers = Helpers.GetDivisionNumbers();
+                }
 
                 Helpers.PrintQuestions(difficulty, numbers, operand);
 
@@ -271,6 +275,8 @@ namespace Math_Game
 
             int nQuestions = Helpers.GetAmountOfQuestions();
 
+            List<int> numbers = new List<int>();
+
             int score = 0;
 
             Stopwatch timer = new Stopwatch();
@@ -281,17 +287,23 @@ namespace Math_Game
                 Console.Clear();
                 Console.WriteLine(message);
 
-                int[] divisionNumbers = Helpers.GetDivisionNumbers();
-                int firstNumber = divisionNumbers[0];
-                int secondNumber = divisionNumbers[1];
+                numbers = Helpers.GetDivisionNumbers();
+                int firstNumber = numbers[0];
+                int secondNumber = numbers[1];
 
                 Console.WriteLine($"{firstNumber} / {secondNumber}");
-
                 string result = Console.ReadLine();
 
                 result = Helpers.ValidateInput(result);
 
-                if (int.Parse(result) == firstNumber / secondNumber)
+                int quotient = numbers[0];
+
+                for (int j = 1; j < numbers.Count; j++)
+                {
+                    quotient /= numbers[j];
+                }
+
+                if (int.Parse(result) == quotient)
                 {
                     Console.WriteLine("Your answer was correct! Type any key for the next question");
                     score++;
