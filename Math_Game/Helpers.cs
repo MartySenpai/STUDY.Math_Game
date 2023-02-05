@@ -1,5 +1,4 @@
 ﻿using Math_Game.Models;
-using System;
 
 namespace Math_Game
 {
@@ -50,7 +49,7 @@ namespace Math_Game
 
             return numbers;
         }
-        internal static string? ValidateInput(string input)
+        internal static string ValidateInput(string input)
         {
             while (string.IsNullOrEmpty(input) || !Int32.TryParse(input, out _))
             {
@@ -62,7 +61,7 @@ namespace Math_Game
         internal static string GetName()
         {
             Console.WriteLine("Please type your name");
-            string? name = Console.ReadLine();
+            string name = Console.ReadLine();
 
             while (string.IsNullOrEmpty(name))
             {
@@ -92,7 +91,7 @@ namespace Math_Game
             int n = 0;
 
             // Makes sure division only print two numbers.
-            if (operand== '/')
+            if (operand == '/')
             {
                 difficulty = "Easy";
             }
@@ -110,6 +109,7 @@ namespace Math_Game
                     break;
             }
 
+            // Prints different amounts of values in a question based on difficulty.
             for (int j = 0; j < n; j++)
             {
                 if (operand != '/')
