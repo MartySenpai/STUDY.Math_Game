@@ -54,7 +54,7 @@ namespace Math_Game
         {
             while (string.IsNullOrEmpty(input) || !Int32.TryParse(input, out _))
             {
-                Console.WriteLine("Your  needs to be an integer, Try again.");
+                Console.WriteLine("Your input needs to be an integer, Try again.");
                 input = Console.ReadLine();
             }
             return input;
