@@ -50,14 +50,14 @@ namespace Math_Game
 
             return numbers;
         }
-        internal static string? ValidateInput(string result)
+        internal static string? ValidateInput(string input)
         {
-            while (string.IsNullOrEmpty(result) || !Int32.TryParse(result, out _))
+            while (string.IsNullOrEmpty(input) || !Int32.TryParse(input, out _))
             {
                 Console.WriteLine("Your  needs to be an integer, Try again.");
-                result = Console.ReadLine();
+                input = Console.ReadLine();
             }
-            return result;
+            return input;
         }
         internal static string GetName()
         {
@@ -91,6 +91,12 @@ namespace Math_Game
 
             int n = 0;
 
+            // Makes sure division only print two numbers.
+            if (operand== '/')
+            {
+                difficulty = "Easy";
+            }
+
             switch (difficulty)
             {
                 case "Easy":
@@ -106,7 +112,11 @@ namespace Math_Game
 
             for (int j = 0; j < n; j++)
             {
-                numbers.Add(random.Next(1, 11));
+                if (operand != '/')
+                {
+                    numbers.Add(random.Next(1, 11));
+                }
+                
                 if (j == n - 1)
                 {
                     Console.Write($"{numbers[j]}\n");

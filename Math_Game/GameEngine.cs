@@ -16,7 +16,7 @@ namespace Math_Game
 
             char operand = '+';
 
-            var score = 0;
+            int score = 0;
 
             List<int> numbers = new List<int>();
 
@@ -32,11 +32,11 @@ namespace Math_Game
 
                 Helpers.PrintQuestions(difficulty, numbers, operand);
 
-                var result = Console.ReadLine();
+                string input = Console.ReadLine();
 
-                result = Helpers.ValidateInput(result);
+                input = Helpers.ValidateInput(input);
 
-                if (int.Parse(result) == numbers.Sum())
+                if (int.Parse(input) == numbers.Sum())
                 {
                     Console.WriteLine("Your answer was correct! Type any key for the next question");
                     score++;
@@ -69,7 +69,7 @@ namespace Math_Game
 
             char operand = '-';
 
-            var score = 0;
+            int score = 0;
 
             List<int> numbers = new List<int>();
 
@@ -85,18 +85,18 @@ namespace Math_Game
 
                 Helpers.PrintQuestions(difficulty, numbers, operand);
 
-                string result = Console.ReadLine();
+                string input = Console.ReadLine();
 
-                result = Helpers.ValidateInput(result);
+                input = Helpers.ValidateInput(input);
 
-                int difference = numbers[0];
+                int output = numbers[0];
 
                 for (int j = 1; j < numbers.Count; j++)
                 {
-                    difference -= numbers[j];
+                    output -= numbers[j];
                 }
 
-                if (int.Parse(result) == difference)
+                if (int.Parse(input) == output)
                 {
                     Console.WriteLine("Your answer was correct! Type any key for the next question");
                     score++;
@@ -130,7 +130,7 @@ namespace Math_Game
 
             char operand = '*';
 
-            var score = 0;
+            int score = 0;
 
             List<int> numbers = new List<int>();
 
@@ -146,18 +146,18 @@ namespace Math_Game
 
                 Helpers.PrintQuestions(difficulty, numbers, operand);
 
-                var result = Console.ReadLine();
+                string input = Console.ReadLine();
 
-                result = Helpers.ValidateInput(result);
+                input = Helpers.ValidateInput(input);
 
-                int product = numbers[0];
+                int output = numbers[0];
 
                 for (int j = 1; j < numbers.Count; j++)
                 {
-                    product *= numbers[j];
+                    output *= numbers[j];
                 }
 
-                if (int.Parse(result) == product)
+                if (int.Parse(input) == output)
                 {
                     Console.WriteLine("Your answer was correct! Type any key for the next question");
                     score++;
@@ -192,7 +192,7 @@ namespace Math_Game
 
             List<char> operands = new List<char> { '+', '-', '*', '/'};
 
-            var score = 0;
+            int score = 0;
 
             List<int> numbers = new List<int>();
 
@@ -215,34 +215,34 @@ namespace Math_Game
 
                 Helpers.PrintQuestions(difficulty, numbers, operand);
 
-                var result = Console.ReadLine();
+                string input = Console.ReadLine();
 
-                result = Helpers.ValidateInput(result);
+                input = Helpers.ValidateInput(input);
 
-                int product = numbers[0];
+                int output = numbers[0];
 
                 for (int j = 1; j < numbers.Count; j++)
                 {
                     // Fix division questions.
                     if (operand == '+')
                     {
-                        product += numbers[j];
+                        output += numbers[j];
                     }
                     else if (operand == '-')
                     {
-                        product -= numbers[j];
+                        output -= numbers[j];
                     }
                     else if (operand == '*')
                     {
-                        product *= numbers[j];
+                        output *= numbers[j];
                     }
                     else
                     {
-                        product /= numbers[j];
+                        output /= numbers[j];
                     }
                 }
 
-                if (int.Parse(result) == product)
+                if (int.Parse(input) == output)
                 {
                     Console.WriteLine("Your answer was correct! Type any key for the next question");
                     score++;
@@ -263,7 +263,7 @@ namespace Math_Game
             timer.Stop();
             TimeSpan timeTaken = timer.Elapsed;
 
-            Helpers.AddToHistory(score, nQuestions, GameType.Multiplication, difficulty, timeTaken);
+            Helpers.AddToHistory(score, nQuestions, GameType.Random, difficulty, timeTaken);
         }
 
         //DivisionGame does not offer difficult levels.
@@ -292,18 +292,18 @@ namespace Math_Game
                 int secondNumber = numbers[1];
 
                 Console.WriteLine($"{firstNumber} / {secondNumber}");
-                string result = Console.ReadLine();
+                string input = Console.ReadLine();
 
-                result = Helpers.ValidateInput(result);
+                input = Helpers.ValidateInput(input);
 
-                int quotient = numbers[0];
+                int output = numbers[0];
 
                 for (int j = 1; j < numbers.Count; j++)
                 {
-                    quotient /= numbers[j];
+                    output /= numbers[j];
                 }
 
-                if (int.Parse(result) == quotient)
+                if (int.Parse(input) == output)
                 {
                     Console.WriteLine("Your answer was correct! Type any key for the next question");
                     score++;
